@@ -9,8 +9,7 @@ import static java.lang.Math.*;
 
 public class task3 {
     public static void main(String[] args){
-        massivs(new String[][] {{"Nice", "942208"}, {"Abu Dhabi", "1482816"}, {"Naples", "2186853"}, {"Vatican City", "587"}});
-        //System.out.println("Задание 1 = " + millionsRounding(new String[][] {{"Nice", String.valueOf(942208)},{"Abu Dhabi", String.valueOf(1482816)},{"Naples", String.valueOf(2186853)},{"Vatican City", String.valueOf(572)}}));
+        System.out.println("Задание 1 = " );millionsRounding(new String[][] {{"Manila", "13923452"},{"Kuala Lumpur", "7996830"}, {"Jakarta", "10770487"}});
         System.out.println("Задание 2 = " + Arrays.toString(otherSides(12)));
         System.out.println("Задание 3 = " + rps("paper","rock"));
         System.out.println("Задание 4 = " + warOfNumber(new int[] {5, 9, 45, 6, 2, 7, 34, 8, 6, 90, 5, 243}));
@@ -25,13 +24,13 @@ public class task3 {
     Учитывая массив городов и населения, верните массив, в котором все население округлено до
     ближайшего миллиона.
      */
-    public static void massivs(String[][] str){
-        System.out.println(str[0][0]);
-        System.out.println(str[0][1]);
-        System.out.println(str[1][0]);
-    }
-    public static String millionsRounding(String[][] str){
-        return null;
+    public static void millionsRounding(String[][] str){
+        for (int i=0; i<str.length;i++){
+            BigDecimal a = new BigDecimal(str[i][1]);
+            a=a.divide(new BigDecimal("1000000")).setScale(0, RoundingMode.HALF_UP);
+            str[i][1]=a.toString();
+        }
+        System.out.println(Arrays.deepToString(str));
     }
     /* Метод для задачи 2 из блока 3/6
     Учитывая самую короткую сторону треугольника 30° на 60° на 90°, вы должны найти другие 2 стороны
